@@ -1,0 +1,1 @@
+ALTER TABLE vendedor ALTER COLUMN matricula TYPE varchar(40);
