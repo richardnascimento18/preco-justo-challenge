@@ -4,6 +4,8 @@ import br.com.preco.justo.domain.model.Pato;
 import br.com.preco.justo.domain.ports.out.Pato.PatoRepositoryInterface;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public class PatoRepository implements PatoRepositoryInterface {
     private final PatoRepositoryImplementation patoRepositoryImplementation;
@@ -17,5 +19,10 @@ public class PatoRepository implements PatoRepositoryInterface {
         PatoImplementation patoImplementation = new PatoImplementation(pato.getNome(), pato.getMaeId(), pato.getStatus());
         PatoImplementation savedPato = patoRepositoryImplementation.save(patoImplementation);
         return new Pato(savedPato.getId(), savedPato.getNome(), savedPato.getMaeId(), savedPato.getStatus(), savedPato.getDataCadastro());
+    }
+
+    @Override
+    public List<Object[]> findQuantidadeDeFilhosPorMaeIds(List<Long> patoIds) {
+        return patoRepositoryImplementation.findQuantidadeDeFilhosPorMaeIds(patoIds);
     }
 }

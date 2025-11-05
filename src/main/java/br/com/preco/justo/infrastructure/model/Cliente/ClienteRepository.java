@@ -18,4 +18,9 @@ public class ClienteRepository implements ClienteRepositoryInterface {
         ClienteImplementation savedCliente = clienteRepositoryImplementation.save(clienteImplementation);
         return new Cliente(savedCliente.getId(), savedCliente.getNome(), savedCliente.isElegivelDesconto(), savedCliente.getDataCadastro());
     }
+
+    @Override
+    public boolean isElegivelDesconto(Long id) {
+        return clienteRepositoryImplementation.isElegivelDesconto(id);
+    }
 }

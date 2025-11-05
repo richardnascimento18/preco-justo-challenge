@@ -1,9 +1,11 @@
 package br.com.preco.justo.infrastructure.config;
 import br.com.preco.justo.application.service.ClienteService;
 import br.com.preco.justo.application.service.PatoService;
+import br.com.preco.justo.application.service.VendaService;
 import br.com.preco.justo.application.service.VendedorService;
 import br.com.preco.justo.domain.ports.out.Cliente.ClienteRepositoryInterface;
 import br.com.preco.justo.domain.ports.out.Pato.PatoRepositoryInterface;
+import br.com.preco.justo.domain.ports.out.Venda.VendaRepositoryInterface;
 import br.com.preco.justo.domain.ports.out.Vendedor.VendedorRepositoryInterface;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -23,5 +25,10 @@ public class ApplicationConfig {
     @Bean
     public VendedorService vendedorService(VendedorRepositoryInterface vendedorRepository) {
         return new VendedorService(vendedorRepository);
+    }
+
+    @Bean
+    public VendaService vendaService(VendaRepositoryInterface vendaRepository, PatoRepositoryInterface patoRepository, ClienteRepositoryInterface clienteRepository) {
+        return new VendaService(vendaRepository, patoRepository, clienteRepository);
     }
 }
