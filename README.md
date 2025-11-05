@@ -82,12 +82,12 @@ Os scripts localizados em `src/main/resources/db/migration` serão executados au
 
 ## 🧠 Funcionalidades Principais
 
-| Recurso                   | Descrição                                                                                |
-| ------------------------- | ---------------------------------------------------------------------------------------- |
-| **/api/v1/pato**          | CRUD de patos (com hierarquia de filhotes)                                               |
-| **/api/v1/cliente**       | Cadastro de clientes                                                                     |
-| **/api/v1/vendedor**      | Cadastro de vendedores                                                                   |
-| **/api/v1/venda**         | Registro de vendas com aplicação automática de descontos                                 |
+| Recurso                   | Descrição                                                                               |
+| ------------------------- |-----------------------------------------------------------------------------------------|
+| **/api/v1/pato**          | Cadastro de patos                                          |
+| **/api/v1/cliente**       | Cadastro de clientes                                                                    |
+| **/api/v1/vendedor**      | Cadastro de vendedores                                                                  |
+| **/api/v1/venda**         | Registro de vendas com aplicação automática de descontos                                |
 | **Descontos Automáticos** | Aplicação de regras de negócio baseadas em número de filhotes e elegibilidade do cliente |
 
 ---
