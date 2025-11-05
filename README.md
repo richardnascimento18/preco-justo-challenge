@@ -119,6 +119,7 @@ Os testes cobrem as principais regras de negócio e garantem o comportamento esp
 * `README.md`: instruções de uso e configuração.
 * `Cronogram.md`: planejamento das etapas e tempo estimado.
 * `db/diagram.png`: diagrama do banco de dados (quando aplicável).
+* `http://localhost:8080/swagger-ui/index.html`: documentação da API pelo Swagger.
 
 ---
 
