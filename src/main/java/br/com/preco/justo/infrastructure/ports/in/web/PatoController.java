@@ -36,7 +36,7 @@ public class PatoController {
         Map<String, ApiResponseDto.Link> links = new ApiLinksBuilder()
                 .previous("GET", "/api/v1/pato/{pato-id}", "get-specific-pato (to-be-implemented)")
                 .current("POST", "/api/v1/pato", "add-pato")
-                .next("DELETE", "/api/v1/income/" + createdPato.getId(), "delete-pato (to-be-implemented)")
+                .next("DELETE", "/api/v1/pato/" + createdPato.getId(), "delete-current-pato (to-be-implemented)")
                 .build();
 
         return new ApiResponseDto<>(201, API_VERSION, patoPostResponseDto, links);
