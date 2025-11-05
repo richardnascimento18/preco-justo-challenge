@@ -1,0 +1,10 @@
+-- V1__create_pato_table.sql
+CREATE TYPE status_pato AS ENUM ('DISPONIVEL', 'VENDIDO');
+
+CREATE TABLE pato (
+  id BIGSERIAL PRIMARY KEY,
+  nome VARCHAR(100) NOT NULL,
+  mae_id BIGINT NULL REFERENCES pato(id) ON DELETE SET NULL,
+  status status_pato NOT NULL DEFAULT 'DISPONIVEL',
+  data_cadastro TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
