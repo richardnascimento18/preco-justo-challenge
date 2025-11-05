@@ -6,12 +6,15 @@ import br.com.preco.justo.infrastructure.ports.in.web.dto.request.VendaPostReque
 import br.com.preco.justo.infrastructure.ports.in.web.dto.response.ApiResponseDto;
 import br.com.preco.justo.infrastructure.ports.in.web.dto.response.VendaPostResponseDto;
 import br.com.preco.justo.infrastructure.ports.in.web.helper.ApiLinksBuilder;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
+@Tag(name = "Venda", description = "Registro de vendas de patos, incluindo cálculo de preço com descontos e vínculo entre cliente e vendedor.")
 @RestController
 @RequestMapping("/api/v1/venda")
 public class VendaController {
@@ -25,6 +28,7 @@ public class VendaController {
         this.vendaService = vendaService;
     }
 
+    @Operation(summary = "Registrar uma nova venda", description = "Registra a venda de um ou mais patos para um cliente, realizada por um vendedor. Aplica regras de desconto automaticamente e retorna detalhes da venda.")
     @PostMapping
     public ApiResponseDto<VendaPostResponseDto> add(@Valid @RequestBody VendaPostRequestDto vendaPostRequestDto) {
         Venda venda = vendaService.salvar(

@@ -2,6 +2,7 @@ package br.com.preco.justo.infrastructure.ports.in.web;
 
 import br.com.preco.justo.infrastructure.ports.in.web.dto.response.ApiResponseDto;
 import br.com.preco.justo.infrastructure.ports.in.web.dto.response.ErrorDto;
+import io.swagger.v3.oas.annotations.Hidden;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.util.Map;
 
+@Hidden
 @RestControllerAdvice
 public class ApiExceptionController {
     @Value("${app.version}")

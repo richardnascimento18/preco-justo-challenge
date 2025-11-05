@@ -10,6 +10,8 @@ import br.com.preco.justo.infrastructure.ports.in.web.dto.response.ApiResponseDt
 import br.com.preco.justo.infrastructure.ports.in.web.dto.response.ClientePostResponseDto;
 import br.com.preco.justo.infrastructure.ports.in.web.dto.response.VendedorPostResponseDto;
 import br.com.preco.justo.infrastructure.ports.in.web.helper.ApiLinksBuilder;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Map;
 
+@Tag(name = "Vendedor", description = "Cadastro e gerenciamento de vendedores, incluindo controle de CPF e matrícula únicos.")
 @RestController
 @RequestMapping("/api/v1/vendedor")
 public class VendedorController {
@@ -32,6 +35,7 @@ public class VendedorController {
         this.vendedorService = vendedorService;
     }
 
+    @Operation(summary = "Cadastrar um novo vendedor", description = "Cria um novo vendedor informando nome e CPF. Gera automaticamente uma matrícula e define o status como ativo.")
     @PostMapping
     public ApiResponseDto<VendedorPostResponseDto> add(@Valid @RequestBody VendedorPostRequestDto vendedorPostRequestDto) {
         Vendedor createdVendedor = vendedorService.salvar(vendedorPostRequestDto.nome(), vendedorPostRequestDto.cpf());

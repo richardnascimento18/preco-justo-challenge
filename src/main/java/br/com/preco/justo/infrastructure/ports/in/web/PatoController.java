@@ -6,6 +6,8 @@ import br.com.preco.justo.infrastructure.ports.in.web.dto.request.PatoPostReques
 import br.com.preco.justo.infrastructure.ports.in.web.dto.response.ApiResponseDto;
 import br.com.preco.justo.infrastructure.ports.in.web.dto.response.PatoPostResponseDto;
 import br.com.preco.justo.infrastructure.ports.in.web.helper.ApiLinksBuilder;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Map;
 
+@Tag(name = "Pato", description = "Gerenciamento e cadastro de patos, incluindo vínculo com a mãe e status de disponibilidade.")
 @RestController
 @RequestMapping("/api/v1/pato")
 public class PatoController {
@@ -28,6 +31,7 @@ public class PatoController {
         this.patoService = patoService;
     }
 
+    @Operation(summary = "Cadastrar um novo pato", description = "Cria um novo registro de pato informando nome e ID da mãe (opcional). Retorna o pato criado com status e data de cadastro.")
     @PostMapping
     public ApiResponseDto<PatoPostResponseDto> add(@Valid @RequestBody PatoPostRequestDto patoPostRequestDto) {
         Pato createdPato = patoService.salvar(patoPostRequestDto.nome(), patoPostRequestDto.maeId());

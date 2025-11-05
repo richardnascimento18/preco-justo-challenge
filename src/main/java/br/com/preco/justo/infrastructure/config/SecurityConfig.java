@@ -18,6 +18,8 @@ public class SecurityConfig {
                         .requestMatchers("/api/v1/cliente/**").permitAll()
                         .requestMatchers("/api/v1/vendedor/**").permitAll()
                         .requestMatchers("/api/v1/venda/**").permitAll()
+                        .requestMatchers("/swagger-ui/**").permitAll()
+                        .requestMatchers("/**").permitAll()
                         .anyRequest().authenticated()
                 );
         return http.build();

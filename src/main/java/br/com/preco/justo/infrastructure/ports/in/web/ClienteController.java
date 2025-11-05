@@ -6,6 +6,8 @@ import br.com.preco.justo.infrastructure.ports.in.web.dto.request.ClientePostReq
 import br.com.preco.justo.infrastructure.ports.in.web.dto.response.ApiResponseDto;
 import br.com.preco.justo.infrastructure.ports.in.web.dto.response.ClientePostResponseDto;
 import br.com.preco.justo.infrastructure.ports.in.web.helper.ApiLinksBuilder;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Map;
 
+@Tag(name = "Cliente", description = "Gerenciamento de clientes, incluindo cadastro e elegibilidade para descontos.")
 @RestController
 @RequestMapping("/api/v1/cliente")
 public class ClienteController {
@@ -28,6 +31,7 @@ public class ClienteController {
         this.clienteService = clienteService;
     }
 
+    @Operation(summary = "Cadastrar um novo cliente", description = "Adiciona um cliente informando nome e status de elegibilidade para desconto. Retorna o cliente criado.")
     @PostMapping
     public ApiResponseDto<ClientePostResponseDto> add(@Valid @RequestBody ClientePostRequestDto clientePostRequestDto) {
         Cliente cliente = clienteService.salvar(clientePostRequestDto.nome(), clientePostRequestDto.elegivelDesconto());
